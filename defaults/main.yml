@@ -1,0 +1,12 @@
+---
+# defaults file for ansible-role-tftp
+
+tftp_server_path: "/srv/tftp"
+
+tftp_server_user: "tftp"
+tftp_server_grop: "tftp"
+tftp_server_mode: "0644"
+
+tftp_server_options: "-4 --secure -vvv"
+
+tftp_server_address: "0.0.0.0:69"

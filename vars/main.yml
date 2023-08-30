@@ -1,0 +1,9 @@
+---
+# vars file for ansible-role-tftp
+
+
+tftp_server_path: "/srv/tftp"
+
+tftp_server_user: "tftp"
+tftp_server_group: "tftp"
+tftp_server_mode: '0644'

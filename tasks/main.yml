@@ -1,0 +1,7 @@
+---
+# tasks file for ansible-role-tftp
+
+- name: system setup
+  tags: system
+  include_tasks: "{{ ansible_distribution }}_{{ ansible_distribution_major_version }}.yml"
+

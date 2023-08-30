@@ -1,0 +1,18 @@
+---
+# handlers file for ansible-role-tftp
+
+- name: tftp-server_reload_systemd
+  systemd:
+    name: tftp-server
+    state: restarted
+    enabled: True
+    daemon-reload: True
+  become_user: root
+
+- name: tftpd-hpa_reload_systemd
+  systemd:
+    name: tftpd-hpa
+    state: restarted
+    enabled: True
+    daemon-reload: True
+  become_user: root
