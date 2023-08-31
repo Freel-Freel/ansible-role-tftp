@@ -5,3 +5,30 @@
   tags: system
   include_tasks: "{{ ansible_distribution }}_{{ ansible_distribution_major_version }}.yml"
 
+- name: Ensure required packages are installed
+  package:
+    name: "{{ firewalld_packages|default([]) }}"
+    update_cache: yes
+    state: present
+  register: stat_service_firewalld_version
+
+#- name: debug stat_service_firewalld_version
+#  fail:
+#    msg: "{{ firewalld_packages|default([]) }}"
+  
+- name: enable access to tftp
+  ansible.posix.firewalld:
+    port: "{{ tftp_server_port }}/udp"
+    permanent: yes
+    state: enabled
+    immediate: yes
+    zone: "{{ tftp_server_firewalld_zone }}"
+  when: 
+    - stat_service_firewalld_version|bool
+
+- name: Gather facts on listening ports
+  community.general.listen_ports_facts:
+
+- name: List UDP ports
+  ansible.builtin.debug:
+    msg: "{{ ansible_facts.udp_listen | map(attribute='port') | sort | list }}"

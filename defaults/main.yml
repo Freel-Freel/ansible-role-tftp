@@ -9,4 +9,5 @@ tftp_server_mode: "0644"
 
 tftp_server_options: "-4 --secure -vvv"
 
-tftp_server_address: "0.0.0.0:69"
+tftp_server_address: "0.0.0.0"
+tftp_server_port: "69"
